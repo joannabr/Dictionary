@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+          crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Kirang+Haerang" rel="stylesheet">
+    <link href="../static/style/style_index.css" th:href="@{/style/style_index.css}" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <title>Słownik dla początkujących</title>
+</head>
+
+<body>
+<header>
+    <div>
+        <div>
+            <div class="graduate-icon">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="title">Słówka angielskie - ucz się z nami </div>
+        </div>
+        <div th:unless="${userObject.isLogin()}">
+            <button onclick="location.href='/login'" type="button" class="offer-btn">Zaloguj się</button>
+            <button onclick="location.href='/register'" class="offer-btn">Zarejestruj się</button>
+        </div>
+
+        <div th:if="${userObject.isLogin()}" class="logged-user">
+            <p th:text="'Jesteś zalogowany jako: ' + ${userObject.getUserEntity().getUsername()}"></p>
+            <p th:text="'Twoja liczba punktów: ' + ${userPoints}"></p>
+            <button onclick="location.href='/logout'" class="offer-btn">
+                Wyloguj się
+            </button>
+            <button onclick="location.href='/removeAccount'" class="offer-btn">
+                Usuń konto
+            </button>
+        </div>
+    </div>
+</header>
+
+<section class="main-panel">
+    <div class="table-info">
+        <div class="best-student">
+            <i class="fas fa-medal fa-8x"></i>
+            <p>Zwycięzca: </p>
+                <b class="winner" th:text="${winner}"></b>
+        </div>
+
+        <div class="learning">
+            <a href="/learning">
+                <p>Nauka</p>
+            </a>
+        </div>
+
+        <div class="forum">
+            <a href="/forum">
+                <p>Forum</p>
+            </a>
+        </div>
+
+    </div>
+    <div class="table-word">
+
+        <div class="table">
+            <a href="/dictionary/1">
+                <i class="fas fa-fish fa-4x"></i>
+                Zwierzęta
+            </a>
+        </div>
+
+        <div class="table">
+            <a href="/dictionary/2">
+                <i class="fas fa-male fa-4x"></i>
+                Budowa ciała
+            </a>
+        </div>
+        <div class="table">
+            <a href="/dictionary/3">
+                <i class="fas fa-home fa-4x"></i>
+                Dom
+            </a>
+        </div>
+
+    </div>
+</section>
+
+</body>
+
+</html>

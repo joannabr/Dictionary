@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Forum</title>
+    <link href="https://fonts.googleapis.com/css?family=Kirang+Haerang" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link href="../static/style/style_forum.css" th:href="@{/style/style_forum.css}" rel="stylesheet"/>
+</head>
+
+<body>
+<header>
+    <div>
+        <div class="graduate-icon"><i class="fas fa-graduation-cap fa-8x"></i></div>
+        <div class="title">Słówka angielskie - ucz się z nami </div>
+    </div>
+</header>
+
+<section class="forum-page">
+    <div class="forum">
+
+        <div class="list-comment" th:each="comment : ${listComment}" >
+
+            <div class="comment-info">
+             <div class="comment" th:text="${comment.getComment()}"></div>
+             <div class="user" th:text="${comment.getUser().getUsername()}"></div>
+             <div class="data" th:text="${comment.getCommentData()}"></div>
+
+            <div th:if="${userObject.isLogin()}">
+            <div th:if="${comment.getUser().getId() == userObject.getUserEntity().getId()}">
+                <a class="delete-comment" th:href="'/deleteComment/' + ${comment.getId()}">Usuń komentarz</a>
+            </div>
+            </div></div>
+
+            <div class="like">
+                <a th:href="'/addOpinion/'+ ${comment.getId()}">
+                    <i class="far fa-thumbs-up"></i>
+                </a>
+            </div>
+        </div>
+
+
+        <form action="/addComment" method="post" class="form-forum">
+            <input class="input-comment" type="text"  name="comment" placeholder="Your comment">
+            <button class="comment-btn" type="submit"><p>Dodaj komentarz</p></button>
+            <button onclick="location.href='/'" type="button" class="back-btn">Anuluj</button>
+        </form>
+
+    </div>
+</section>
+
+
+</body>
+</html>

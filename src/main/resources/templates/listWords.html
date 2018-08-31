@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dictionary</title>
+    <link href="https://fonts.googleapis.com/css?family=Kirang+Haerang" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+          crossorigin="anonymous">
+    <link href="../static/style/style_list_words.css" th:href="@{/style/style_list_words.css}" rel="stylesheet" />
+</head>
+
+<body>
+<header>
+    <div>
+        <div class="graduate-icon">
+            <i class="fas fa-graduation-cap fa-8x"></i>
+        </div>
+        <div class="title">Słówka angielskie - ucz się z nami </div>
+    </div>
+</header>
+
+<section class="word-page">
+
+    <div th:if="${infoAboutUserWord}" class="info-about-added-word">
+        <strong th:text="${infoAboutUserWord}"></strong>
+    </div>
+
+            <div class="list-words" th:each="word : ${listWords}" >
+            <div class="justify-list">
+                <div th:text="${word.getEnglishWord()}"></div>
+            </div>
+
+            <div class="justify-list">
+                <div th:text="${word.getPolishWord()}"></div>
+            </div>
+
+            <div th:if="${userObject.isLogin()}">
+
+                <div class="logged-user-yes justify-list">
+                        <a th:href="'/addWordToUser/'+ ${word.getId()}+'/'+${word.getCategory().getId()}">
+                            <i class="fas fa-plus-circle"></i>
+                        </a>
+                </div>
+            </div>
+
+            <div th:unless="${userObject.isLogin()}" class="unlogged-user">
+        <i class="fas fa-plus-circle"></i>
+            </div>
+
+        </div>
+
+         <button onclick="location.href='/'" type="button" class="back-btn">Anuluj</button>
+</section>
+</body>
+
+</html>

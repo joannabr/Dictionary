@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rejestracja</title>
+    <link href="https://fonts.googleapis.com/css?family=Kirang+Haerang" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link href="../static/style/style_register.css" th:href="@{/style/style_register.css}" rel="stylesheet"/>
+</head>
+
+<body>
+<header>
+    <div>
+        <div class="graduate-icon"><i class="fas fa-graduation-cap fa-8x"></i></div>
+        <div class="title">Słówka angielskie - ucz się z nami </div>
+    </div>
+</header>
+
+<section class="register-page">
+    <div class="register">
+        <div th:if="${infoAboutRegister != null}" class="wrong-register">
+            <strong th:text="${infoAboutRegister}"></strong>
+        </div>
+
+        <form action="/register" method="post" th:object="${registerForm}" class="form-register">
+            <input class="input-register" th:field="*{username}" type="text" placeholder="Username">
+            <input class="input-register" th:field="*{email}" type="text" placeholder="Email">
+            <input class="input-register" th:field="*{password}" type="password" placeholder="Hasło">
+            <button class="register-btn" type="submit">Zarejestruj się</button>
+            <button onclick="location.href='/'" type="button" class="back-btn">Anuluj</button>
+
+        </form>
+        </div>
+</section>
+
+
+</body>
+</html>

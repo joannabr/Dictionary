@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Logownaie</title>
+    <link href="https://fonts.googleapis.com/css?family=Kirang+Haerang" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+          integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link href="../static/style/style_login.css" th:href="@{/style/style_login.css}" rel="stylesheet"/>
+</head>
+
+<body>
+<header>
+<div>
+        <div class="graduate-icon"><i class="fas fa-graduation-cap fa-8x"></i></div>
+        <div class="title">Słówka angielskie - ucz się z nami </div>
+</div>
+</header>
+
+    <section class="login-page">
+        <div class="login">
+    <div th:if="${infoAboutLogin != null}" class="wrong-login">
+        <strong th:text="${infoAboutLogin}"></strong>
+    </div>
+
+
+    <form action="/login" method="post" class="form-login">
+        <input class="input-login" type="text"  name="username" placeholder="Username">
+        <input class="input-login" type="password"  name="password" placeholder="Password">
+
+        <button class="login-btn" type="submit">Zaloguj się</button>
+        <button onclick="location.href='/'" type="button" class="back-btn">Anuluj</button>
+    </form>
+
+        </div>
+    </section>
+
+
+</body>
+</html>
