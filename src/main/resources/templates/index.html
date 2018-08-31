@@ -27,14 +27,18 @@
         </div>
 
         <div th:if="${userObject.isLogin()}" class="logged-user">
+            <div class="info-user">
             <p th:text="'Jesteś zalogowany jako: ' + ${userObject.getUserEntity().getUsername()}"></p>
             <p th:text="'Twoja liczba punktów: ' + ${userPoints}"></p>
+            </div>
+                <div class="logged-button">
             <button onclick="location.href='/logout'" class="offer-btn">
                 Wyloguj się
             </button>
             <button onclick="location.href='/removeAccount'" class="offer-btn">
                 Usuń konto
             </button>
+                </div>
         </div>
     </div>
 </header>
@@ -79,6 +83,24 @@
             <a href="/dictionary/3">
                 <i class="fas fa-home fa-4x"></i>
                 Dom
+            </a>
+        </div>
+        <div class="table">
+            <a href="/dictionary/4">
+                <i class="fas fa-volleyball-ball fa-4x"></i>
+                Sport
+            </a>
+        </div>
+        <div class="table">
+            <a href="/dictionary/5">
+                <i class="fas fa-school fa-4x"></i>
+                Szkoła
+            </a>
+        </div>
+        <div class="table">
+            <a href="/dictionary/6">
+                <i class="fas fa-car fa-4x"></i>
+                Transport
             </a>
         </div>
 

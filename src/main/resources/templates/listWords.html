@@ -22,10 +22,7 @@
 
 <section class="word-page">
 
-    <div th:if="${infoAboutUserWord}" class="info-about-added-word">
-        <strong th:text="${infoAboutUserWord}"></strong>
-    </div>
-
+    <br>
             <div class="list-words" th:each="word : ${listWords}" >
             <div class="justify-list">
                 <div th:text="${word.getEnglishWord()}"></div>

@@ -130,3 +130,15 @@ section .learning{
     text-decoration: none;
     padding: 10px;
 }
+
+.back-button{
+    display: flex;
+    justify-content: center;
+}
+
+.check-word-btn{
+    padding: 4px;
+    border-radius: 2px;
+    border: none;
+    background-color: #f4d0ec;
+}

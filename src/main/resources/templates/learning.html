@@ -22,7 +22,8 @@
 
 
     <div th:unless="${userObject.isLogin()}" class="learning">
-        Nie jesteś zalogowany
+        <br>
+       <b>Nie jesteś zalogowany</b>
     </div>
 
     <div th:if="${userObject.isLogin()}" class="learning">
@@ -38,18 +39,18 @@
                 <div th:text="${word.getWord().getPolishWord()}"></div>
             </div>
             <div class="form-style">
-            <form action="/checkWord/animal" method="post" class="form-learning">
+            <form th:action="'/checkWord/' + ${word.getWord().getId()}" method="post" class="form-learning">
                 <input class="input-learning" type="text"  name="checkWord" placeholder="Your answear">
                 <button class="check-word-btn" type="submit">Sprawdź słowo</button>
-            <!--    <a th:href="'/delete/animal/' + ${animalWord.getAnimal().getId()}" class="delete-word">Usuń słowo</a> -->
-                <!--<button onclick="location.href='/delete/animal/'+ ${animalWord.getAnimal().getId()}" type="button" class="check-word-btn">Usuń słowo</button>-->
             </form>
+                <a th:href="'/delete/' + ${word.getWord().getId()}" class="delete-word">Usuń słowo</a>
             </div>
        </div>
-
-        <button onclick="location.href='/'" type="button" class="back-btn">Wróć na stronę główną</button>
-
     </div>
+       <div class="back-button">
+        <button onclick="location.href='/'" type="button" class="back-btn">Wróć na stronę główną</button>
+       </div>
+
 </section>
 
 

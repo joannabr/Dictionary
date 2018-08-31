@@ -1,12 +1,10 @@
 package pl.joannabrania.Dictionary.models.services;
 
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.joannabrania.Dictionary.models.DicitionaryEntity;
-import pl.joannabrania.Dictionary.models.UserDictionaryEntity;
-import pl.joannabrania.Dictionary.models.UserEntity;
 import pl.joannabrania.Dictionary.models.repositories.DictionaryRepository;
+import pl.joannabrania.Dictionary.models.repositories.DictionaryUserRepository;
 import pl.joannabrania.Dictionary.models.repositories.UserRepository;
 
 import java.util.List;
@@ -17,12 +15,14 @@ public class DictionaryService {
     final UserRepository userRepository;
     final DictionaryRepository dictionaryRepository;
     final SessionService sessionService;
+    final DictionaryUserRepository dictionaryUserRepository;
 
     @Autowired
-    public DictionaryService(UserRepository userRepository, DictionaryRepository dictionaryRepository, SessionService sessionService) {
+    public DictionaryService(UserRepository userRepository, DictionaryRepository dictionaryRepository, SessionService sessionService, DictionaryUserRepository dictionaryUserRepository) {
         this.userRepository = userRepository;
         this.dictionaryRepository = dictionaryRepository;
         this.sessionService = sessionService;
+        this.dictionaryUserRepository = dictionaryUserRepository;
     }
 
     public List<DicitionaryEntity> getWords(int numberGroup) {
@@ -32,6 +32,7 @@ public class DictionaryService {
     public List<DicitionaryEntity> getUserWords(int numberGroup) {
         return dictionaryRepository.findUserWordsByGroup(numberGroup, sessionService.getUserEntity().getId());
     }
+
 
 
 }

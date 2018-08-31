@@ -39,14 +39,17 @@
                 <a th:href="'/addOpinion/'+ ${comment.getId()}">
                     <i class="far fa-thumbs-up"></i>
                 </a>
+                <p class="like-button" th:text="${comment.getOpinion()}"></p>
             </div>
         </div>
 
 
         <form action="/addComment" method="post" class="form-forum">
+
             <input class="input-comment" type="text"  name="comment" placeholder="Your comment">
             <button class="comment-btn" type="submit"><p>Dodaj komentarz</p></button>
             <button onclick="location.href='/'" type="button" class="back-btn">Anuluj</button>
+
         </form>
 
     </div>
